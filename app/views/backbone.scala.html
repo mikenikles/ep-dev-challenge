@@ -1,0 +1,72 @@
+
+@main() {
+    
+	<div class="alert alert-info">
+		<h4 class="alert-heading">This is a visualization of the EP Dev Challenge!</h4>
+		See <a href="http://www.epdeveloperchallenge.com/">http://www.epdeveloperchallenge.com/</a> for more details.
+	</div>
+
+    <p>
+    	<button class="btn btn-success" type="submit" id="startMaze" data-loading-text="Finding my way...">Start</button>
+    </p>
+
+	<div id="notification"></div>
+	
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse"
+				data-parent="#accordion2" href="#collapseSettings"> Settings</a>
+		</div>
+		<div id="collapseSettings" class="accordion-body in collapse"
+			style="height: auto;">
+			<div class="accordion-inner">
+				<label class="checkbox"><input id="mazeAutopilot" type="checkbox"> Autopilot</label><br />
+				<!-- label class="checkbox"><input id="mazeEnableScrollSpy" type="checkbox"> Automatic scrolling</label><br /-->
+				<label class="checkbox"><input id="mazeStopAtDeadEnds" type="checkbox"> Stop at dead ends</label><br />
+			</div>
+		</div>
+	</div>
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse"
+				data-parent="#accordion2" href="#collapseStatistics"> Statistics</a>
+		</div>
+		<div id="collapseStatistics" class="accordion-body in collapse"
+			style="height: auto;">
+			<div class="accordion-inner" id="statistics"></div>
+		</div>
+	</div>
+
+	<div class="alert alert-info">
+	    <p>
+			<strong>Solving maze:</strong> <span id="mazeGUID">Not started yet</span>
+	    </p>
+	</div>
+
+	<p>	
+	</p>
+
+    <div id="maze"></div>
+
+	<!-- Templates -->
+	<script type="text/template" id="notification-tpl">
+		<div class="alert <%= className %>">
+	    	<p>
+	        	<strong><%= title %></strong>
+	        	<span><%= msg %></span>
+	    	</p>
+		</div>
+	</script>
+
+	<script type="text/template" id="statistics-tpl">
+		Total moves: <%= totalMoves %><br />
+		Total forks: <%= totalForks %><br />
+		Total dead ends: <%= totalDeadEnds %><br />
+	</script>
+
+	<script src="@routes.Assets.at("javascripts/main.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.at("javascripts/utils.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.at("javascripts/models.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.at("javascripts/views.js")" type="text/javascript"></script>
+}

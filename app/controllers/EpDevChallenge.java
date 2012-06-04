@@ -15,7 +15,7 @@ public class EpDevChallenge extends Controller {
      * Display the home page.
      */
     public static Result index() {
-    	return ok(views.html.index.render());
+    	return ok(views.html.backbone.render());
     }
 
     /**

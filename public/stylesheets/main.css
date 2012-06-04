@@ -27,6 +27,21 @@ body {
 	background-color: red;
 }
 
+.north {
+	border-top-color: black;
+}
+
+.east {
+	border-right-color: black;
+}
+
+.south {
+	border-bottom-color: black;
+}
+
+.west {
+	border-left-color: black;
+}
 
 
 

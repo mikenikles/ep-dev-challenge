@@ -1,6 +1,5 @@
 package models;
 
-import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.JsonNode;
 
 import play.Logger;
@@ -22,24 +21,18 @@ public class MazeClient {
 	static String mazeGUID = "";
 
 	public static JsonNode init() throws Exception {
-		if (StringUtils.isBlank(mazeGUID)) {
-			Logger.info("Initializing EP maze...");
+		Logger.info("Initializing EP maze...");
 
-			Response response = WS.url(EP_MAZE_INIT_URL).post("").get();
-			if (response.getStatus() == 400) {
-				throw new Exception(
-						"EP maze not created due to 400 HTTP error code (too many mazes currently in EP server memory).");
-			}
-			JsonNode responseJson = response.asJson();
-			mazeGUID = responseJson.findPath("mazeGuid").getTextValue();
-
-			Logger.info("EP maze successfully initialized. GUID: " + mazeGUID);
-			return responseJson;
-		} else {
-			Logger.error("An EP maze is already initialized, no need to create a new one. Current maze GUID: "
-					+ mazeGUID);
-			return null;
+		Response response = WS.url(EP_MAZE_INIT_URL).post("").get();
+		if (response.getStatus() == 400) {
+			throw new Exception(
+					"EP maze not created due to 400 HTTP error code (too many mazes currently in EP server memory).");
 		}
+		JsonNode responseJson = response.asJson();
+		mazeGUID = responseJson.findPath("mazeGuid").getTextValue();
+
+		Logger.info("EP maze successfully initialized. GUID: " + mazeGUID);
+		return responseJson;
 	}
 
 	public static JsonNode move(Direction direction) throws Exception {
